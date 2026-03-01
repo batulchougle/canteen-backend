@@ -26,7 +26,7 @@ if ENV_FILE.exists():
             k, v = line.split('=', 1)
             os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
  
- 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -34,11 +34,9 @@ if ENV_FILE.exists():
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'insecure-default-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [ 'localhost',          # for local development
-    '127.0.0.1',          # loopback address
-    '10.0.2.2']
+ALLOWED_HOSTS = [ '*']
 
 DEBUG = True
 EMAIL_HOST ='smtp.gmail.com'

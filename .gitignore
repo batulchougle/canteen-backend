@@ -1,0 +1,45 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.env.*
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Node / React Native
+**/node_modules/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Android
+**/.gradle/
+**/.cxx/
+**/build/
+**/*.iml
+**/.idea/
+**/*.keystore
+**/*.jks
+**/local.properties
+**/google-services.json
+
+# iOS
+**/Pods/
+**/build/
+**/*.xcuserstate
+**/.xcode.env.local
+
+# Editors/OS
+.vscode/
+.DS_Store
+Thumbs.db

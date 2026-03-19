@@ -4,13 +4,14 @@ from typing import Optional
 from django.conf import settings
 import resend
 from .models import User, OneTimePassword
+import os
 
 def generate_otp(length: int = 6) -> str:
     return ''.join(str(random.randint(0, 9)) for _ in range(length))
 
 def _send_email(name, to_email, otp_code):
     try:
-        resend.api_key = settings.RESEND_API_KEY
+        resend.api_key = os.environ.get('RESEND_API_KEY')
         resend.Emails.send({
             "from": "onboarding@resend.dev",
             "to": to_email,

@@ -57,5 +57,5 @@ urllib3==2.5.0
 gunicorn==21.2.0
 dj-database-url
 psycopg2-binary
-
+resend
 

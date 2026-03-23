@@ -1,9 +1,12 @@
 import random
 import threading
+import logging
 from typing import Optional
 from django.core.mail import EmailMessage
 from django.conf import settings
 from .models import User, OneTimePassword
+
+logger = logging.getLogger(__name__)
 
 def generate_otp(length: int = 6) -> str:
     return ''.join(str(random.randint(0, 9)) for _ in range(length))
@@ -19,9 +22,9 @@ def _send_email(name, to_email, otp_code):
         )
         message = EmailMessage(subject=subject, body=body, from_email=settings.DEFAULT_FROM_EMAIL, to=[to_email])
         message.send(fail_silently=False)
-        print(f"EMAIL SENT to {to_email}")
+        logger.warning(f"EMAIL SENT to {to_email}")
     except Exception as e:
-        print(f"EMAIL ERROR: {e}")
+        logger.warning(f"EMAIL ERROR: {type(e).__name__}: {e}")
 
 def send_code_to_user(email: str, user: Optional[User] = None) -> None:
     user = user or User.objects.get(email=email)
